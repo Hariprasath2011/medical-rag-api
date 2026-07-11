@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi import UploadFile
-
+from services.pdf_service import extract_text
 from services.chroma_service import connect
 
 app = FastAPI()
@@ -10,18 +10,13 @@ client = connect()
 @app.post("/ingest")
 async def ingest(file: UploadFile):
 
+    text = extract_text(file)
+
     return {
         "filename": file.filename,
-        "content_type": file.content_type
+        "characters": len(text),
+        "preview": text[:500]
     }
-
-@app.get("/")
-def root():
-
-    return {
-        "status": "Medical RAG API Running"
-    }
-
 
 @app.get("/collections")
 def collections():
