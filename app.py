@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi import UploadFile
 from services.pdf_service import extract_text
 from services.chroma_service import connect
+from services.chunk_service import create_chunks
 
 app = FastAPI()
 
@@ -12,10 +13,13 @@ async def ingest(file: UploadFile):
 
     text = extract_text(file)
 
+    chunks = create_chunks(text)
+
     return {
         "filename": file.filename,
         "characters": len(text),
-        "preview": text[:500]
+        "chunks": len(chunks),
+        "first_chunk": chunks[0]
     }
 
 @app.get("/collections")
