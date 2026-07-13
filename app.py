@@ -1,4 +1,17 @@
-print("VERSION 2 - APP LOADED")
+import os
+
+print("CURRENT DIRECTORY:", os.getcwd())
+print("FILES:", os.listdir("."))
+
+if os.path.exists("services"):
+    print("SERVICES:", os.listdir("services"))
+else:
+    print("SERVICES FOLDER NOT FOUND")
+from fastapi import FastAPI
+from fastapi import UploadFile
+from services.pdf_service import extract_text
+from services.chroma_service import connect
+from services.chunk_service import create_chunks
 from fastapi import FastAPI
 from fastapi import UploadFile
 from services.pdf_service import extract_text
