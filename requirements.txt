@@ -3,12 +3,8 @@ uvicorn[standard]==0.30.6
 
 chromadb==0.5.23
 
-sentence-transformers==3.0.1
-torch
-
 PyMuPDF==1.24.10
 
 langchain-text-splitters==0.2.2
-langchain-huggingface
 
 python-multipart==0.0.9
