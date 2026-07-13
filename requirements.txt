@@ -9,5 +9,6 @@ torch
 PyMuPDF==1.24.10
 
 langchain-text-splitters==0.2.2
-langchain-text-splitters
+langchain-huggingface
+
 python-multipart==0.0.9
