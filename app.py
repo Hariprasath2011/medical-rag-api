@@ -1,3 +1,4 @@
+print("VERSION 2 - APP LOADED")
 from fastapi import FastAPI
 from fastapi import UploadFile
 from services.pdf_service import extract_text
